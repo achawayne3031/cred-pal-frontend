@@ -131,6 +131,130 @@ const Wallet = () => {
     }
   };
 
+  const [fundWalletPayload, setFundWalletPayload] = React.useState({
+    amount: "",
+  });
+
+  const [openFundWallet, setOpenFundWallet] = React.useState(false);
+  const handleOpenFundWallet = () => setOpenFundWallet(true);
+  const handleCloseFundWallet = () => setOpenFundWallet(false);
+  const [isFundWalletLoading, setIsFundWalletLoading] = useState(false);
+
+  const handleSubmitFundWallet = async () => {
+    try {
+      if (fundWalletPayload.amount === "") {
+        ToasterAlert("Enter amount", "error");
+        return;
+      }
+
+      let payload = {
+        amount: parseFloat(fundWalletPayload.amount),
+      };
+
+      setIsFundWalletLoading(true);
+      const response = await axiosInstance.post(
+        "/transactions/deposit",
+        payload
+      );
+      setIsFundWalletLoading(false);
+
+      if (response.data.status) {
+        handleCloseFundWallet();
+        setUserProfileData(response.data.result.user);
+        setUserAccountData(response.data.result.account);
+        handleGetUserProfile();
+        handleGetUserTranssctions();
+        setFundWalletPayload({ amount: "" });
+      }
+    } catch (error: any) {
+      setIsFundWalletLoading(false);
+      ToasterAlert(error.response.data.message, "error");
+    }
+  };
+
+  const handleChangeFundWallet = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFundWalletPayload({ amount: event.target.value });
+  };
+
+  const [transferPayload, setTransferPayload] = React.useState({
+    amount: "",
+    email: "",
+    note: "",
+  });
+
+  const [openTransferModal, setOpenTransferModal] = React.useState(false);
+  const handleOpenTransferModal = () => setOpenTransferModal(true);
+  const handleCloseTransferModal = () => setOpenTransferModal(false);
+  const [isTransferLoading, setIsTransferLoading] = useState(false);
+
+  const handleSubmitTransfer = async () => {
+    try {
+      if (transferPayload.amount === "" && transferPayload.email === "") {
+        ToasterAlert("Fill in the required fields", "error");
+        return;
+      }
+
+      let payload = {
+        amount: parseFloat(transferPayload.amount),
+        email: transferPayload.email,
+        note: transferPayload.note,
+      };
+
+      setIsTransferLoading(true);
+      const response = await axiosInstance.post(
+        "/transactions/transfer-email",
+        payload
+      );
+      setIsTransferLoading(false);
+
+      if (response.data.status) {
+        handleCloseTransferModal();
+        setUserProfileData(response.data.result.user);
+        setUserAccountData(response.data.result.account);
+        handleGetUserProfile();
+        handleGetUserTranssctions();
+        setTransferPayload({ amount: "", email: "", note: "" });
+      }
+    } catch (error: any) {
+      setIsTransferLoading(false);
+      ToasterAlert(error.response.data.message, "error");
+    }
+  };
+
+  const handleChangeTransfer = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (event.target.name) {
+      case "email":
+        setTransferPayload((prevPayload) => ({
+          ...prevPayload,
+          email: event.target.value,
+        }));
+
+        break;
+
+      case "amount":
+        setTransferPayload((prevPayload) => ({
+          ...prevPayload,
+          amount: event.target.value,
+        }));
+
+        break;
+
+      case "note":
+        setTransferPayload((prevPayload) => ({
+          ...prevPayload,
+          note: event.target.value,
+        }));
+
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="container-fluid wallet-wrapper">
@@ -290,10 +414,23 @@ const Wallet = () => {
 
             <div className="transaction-wrapper d-flex">
               <div className="flex-fill">
+                <button onClick={handleOpenFundWallet} className="trans-btn">
+                  Fund Wallet
+                </button>
+              </div>
+
+              <div className="flex-fill">
+                <button onClick={handleOpenTransferModal} className="trans-btn">
+                  Transfer To User
+                </button>
+              </div>
+
+              <div className="flex-fill">
                 <button onClick={handleOpenPaymentOption} className="trans-btn">
                   Add Funds
                 </button>
               </div>
+
               <div className="flex-fill">
                 <button className="trans-btn">Withdrawal</button>
               </div>
@@ -667,6 +804,174 @@ const Wallet = () => {
 
             <div className="continue-btn-wrapper">
               <button onClick={handlePaymentCompleted}>Pay Now</button>
+            </div>
+          </Box>
+        </Modal>
+
+        {/* Fund Wallet Modal */}
+        <Modal
+          open={openFundWallet}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <div className="payment-option-top-wrapper">
+              <div>
+                <h6 className="title-text">Fund Wallet</h6>
+              </div>
+
+              <div>
+                <svg
+                  onClick={handleCloseFundWallet}
+                  className="svg-close-option"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.33317 15.8333L4.1665 14.6667L8.83317 9.99999L4.1665 5.33332L5.33317 4.16666L9.99984 8.83332L14.6665 4.16666L15.8332 5.33332L11.1665 9.99999L15.8332 14.6667L14.6665 15.8333L9.99984 11.1667L5.33317 15.8333Z"
+                    fill="#1D1B20"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div className="payment-details-body-wrapper">
+              <div className="inner-details-selection">
+                <InputField
+                  section="null"
+                  type="text"
+                  label="Amount"
+                  value={fundWalletPayload.amount}
+                  name="amount"
+                  error={Boolean(fundWalletPayload.amount)}
+                  errorText={
+                    Boolean(fundWalletPayload.amount) ? "" : "Enter amounr"
+                  }
+                  onChange={handleChangeFundWallet}
+                  placeholder="amount"
+                />
+              </div>
+            </div>
+
+            <div className="continue-btn-wrapper">
+              <button
+                disabled={isFundWalletLoading}
+                onClick={handleSubmitFundWallet}
+              >
+                {!isFundWalletLoading ? (
+                  <>
+                    <span>Fund Wallet</span>
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      <div className="spinner-border text-light spinner-border-sm"></div>
+                    </span>
+                  </>
+                )}
+              </button>
+            </div>
+          </Box>
+        </Modal>
+
+        {/* Transfer with Email Modal */}
+        <Modal
+          open={openTransferModal}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <div className="payment-option-top-wrapper">
+              <div>
+                <h6 className="title-text">Transfer To User</h6>
+              </div>
+
+              <div>
+                <svg
+                  onClick={handleCloseTransferModal}
+                  className="svg-close-option"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.33317 15.8333L4.1665 14.6667L8.83317 9.99999L4.1665 5.33332L5.33317 4.16666L9.99984 8.83332L14.6665 4.16666L15.8332 5.33332L11.1665 9.99999L15.8332 14.6667L14.6665 15.8333L9.99984 11.1667L5.33317 15.8333Z"
+                    fill="#1D1B20"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div className="payment-details-body-wrapper">
+              <div className="inner-details-selection">
+                <InputField
+                  section="null"
+                  type="text"
+                  label="Amount"
+                  value={transferPayload.amount}
+                  name="amount"
+                  error={Boolean(transferPayload.amount)}
+                  errorText={
+                    Boolean(transferPayload.amount) ? "" : "Enter amounr"
+                  }
+                  onChange={handleChangeTransfer}
+                  placeholder="amount"
+                />
+              </div>
+
+              <div className="inner-details-selection">
+                <InputField
+                  section="null"
+                  type="email"
+                  label="Email"
+                  value={transferPayload.email}
+                  name="email"
+                  error={Boolean(transferPayload.email)}
+                  errorText={
+                    Boolean(transferPayload.email) ? "" : "Enter email"
+                  }
+                  onChange={handleChangeTransfer}
+                  placeholder="email"
+                />
+              </div>
+
+              <div className="inner-details-selection">
+                <InputField
+                  section="null"
+                  type="text"
+                  label="Note"
+                  value={transferPayload.note}
+                  name="note"
+                  error={Boolean(transferPayload.note)}
+                  errorText={Boolean(transferPayload.email) ? "" : ""}
+                  onChange={handleChangeTransfer}
+                  placeholder="note"
+                />
+              </div>
+            </div>
+
+            <div className="continue-btn-wrapper">
+              <button
+                disabled={isTransferLoading}
+                onClick={handleSubmitTransfer}
+              >
+                {!isTransferLoading ? (
+                  <>
+                    <span>Transfer to user</span>
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      <div className="spinner-border text-light spinner-border-sm"></div>
+                    </span>
+                  </>
+                )}
+              </button>
             </div>
           </Box>
         </Modal>
