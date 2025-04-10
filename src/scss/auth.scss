@@ -1,0 +1,180 @@
+.form-widget-wrapper {
+  .form-wrapper {
+    .line-through-text {
+      position: relative;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 45px;
+
+      .signing-text {
+        background-color: #ffffff;
+        display: inline-block;
+        padding: 5px 20px;
+        position: relative;
+        top: 30px;
+      }
+    }
+
+    .social-media-btn-wrapper {
+      display: flex;
+      justify-content: center;
+
+      .media-btn {
+        border: 1px solid #6d6d6d;
+        border-radius: 20px;
+        padding: 5px 25px;
+        max-width: 150px;
+        min-width: 100px;
+        background-color: #ffffff;
+        margin-right: 10px;
+      }
+    }
+
+    .submit-btn {
+      background-color: #0d0d0c;
+      width: 100%;
+      padding: 10px 15px;
+      color: #ffffff;
+      border: 0px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    .agree-wrapper {
+      display: flex;
+      align-items: center;
+      margin: auto;
+
+      div {
+        p {
+          margin-left: 15px;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+        input {
+          margin: 0px;
+          padding: 0px;
+        }
+      }
+    }
+  }
+
+  .create-title {
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .sub-create-title {
+    font-size: 15px;
+    color: #474d66;
+  }
+}
+
+.left-bg-wrapper {
+  padding: 50px;
+
+  .inner-bg-wrapper {
+    position: absolute;
+    bottom: 30px;
+    max-width: 200px;
+
+    h5 {
+      color: #ffffff;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .collaterized-wrapper {
+      margin-top: 20px;
+
+      ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      li {
+        padding: 5px 10px;
+
+        span {
+          padding-left: 10px;
+          color: #ffffff;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .left-bg-wrapper {
+    padding: 25px;
+
+    .inner-bg-wrapper {
+      h5 {
+        font-size: 15px;
+      }
+
+      .collaterized-wrapper {
+        margin-top: 20px;
+
+        li {
+          span {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .left-bg-wrapper {
+    display: none;
+  }
+
+  .form-widget-wrapper {
+    .form-wrapper {
+      .line-through-text {
+        margin-bottom: 0px;
+        margin-top: -40px;
+        .signing-text {
+          font-size: 10px;
+        }
+      }
+
+      .social-media-btn-wrapper {
+        .media-btn {
+          padding: 2px 20px;
+          max-width: 130px;
+          min-width: 100px;
+          margin-right: 5px;
+        }
+      }
+
+      .submit-btn {
+        font-size: 10px;
+      }
+
+      .agree-wrapper {
+        div {
+          p {
+            font-size: 10px;
+          }
+          input {
+            margin: 0px;
+            padding: 0px;
+          }
+        }
+      }
+    }
+
+    .create-title {
+      font-size: 20px;
+    }
+
+    .sub-create-title {
+      font-size: 13px;
+    }
+  }
+}

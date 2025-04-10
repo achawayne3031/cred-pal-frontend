@@ -1,0 +1,238 @@
+.payment-details-body-wrapper {
+  .inner-details-selection {
+  }
+}
+
+.continue-btn-wrapper {
+  margin-top: 60px;
+
+  button {
+    width: 100%;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #ffde02;
+    color: #5e5204;
+    padding: 10px 20px;
+    font-weight: 700;
+  }
+}
+
+.payment-option-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  .add-payment-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    h6 {
+      margin-bottom: 0px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 15px;
+    }
+  }
+
+  .inner-option-selection {
+    padding: 5px 15px;
+    border: 2px solid #d8dae5;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    .internal-section {
+      display: flex;
+      align-items: center;
+      h6 {
+        margin-bottom: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .inner-option-selection:hover {
+    border: 2px solid #5e5204;
+  }
+}
+
+.payment-option-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .title-text {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .svg-close-option {
+    float: right;
+    cursor: pointer;
+  }
+}
+
+.wallet-wrapper {
+  .wallet-title {
+  }
+
+  .wallet-hr-line {
+    border: 0.5px solid #c8cbd9;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .table-wrapper {
+    .table-transaction-header {
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .table-trans-cell {
+      font-size: 12px;
+    }
+
+    .table-btn {
+      background-color: #ffffff;
+
+      padding: 5px 20px;
+
+      font-size: 10px;
+      border: 1px solid #d9d8d5;
+      border-radius: 5px;
+      color: black;
+    }
+  }
+
+  .transaction-wrapper {
+    .transaction-btn-action-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .filter-wrapper {
+        display: flex;
+        align-items: center;
+        width: 150px;
+
+        .select-filter {
+          width: 80px;
+        }
+
+        select {
+          background-color: #ffffff;
+          padding: 5px 10px;
+          border: 1px solid #595957;
+          width: 80px;
+          border-radius: 5px;
+          option {
+            color: black;
+          }
+        }
+        h6 {
+          color: #8c8c89;
+          font-size: 12px;
+          width: 50px;
+        }
+      }
+
+      .btn-wrapper {
+        div {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+        button {
+          background-color: #ffffff;
+          width: 100%;
+          font-size: 10px;
+          border: 1px solid #d9d8d5;
+          border-radius: 5px;
+          color: #d9d8d5;
+        }
+
+        button:hover {
+          color: black;
+          border: 1px solid black;
+        }
+      }
+    }
+
+    .transaction-history-text {
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
+
+  .balance-wrapper {
+    border-right: 1px solid #c8cbd9;
+
+    .transaction-wrapper {
+      margin-top: 10px;
+      div {
+        margin-right: 5px;
+      }
+
+      .trans-btn {
+        background-color: #ffffff;
+        padding: 5px;
+        width: 100%;
+        font-size: 10px;
+        border: 1px solid #d9d8d5;
+        border-radius: 5px;
+        color: #d9d8d5;
+      }
+
+      .trans-btn:hover {
+        background-color: #ffde02;
+        color: #595957;
+      }
+    }
+
+    .inner-balance-wrapper {
+      background-color: rgb(255, 255, 255);
+      padding: 15px;
+      .balance-text {
+        font-size: 13px;
+        font-weight: 700;
+        color: #595957;
+      }
+
+      .balance-amount {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .wallet-bank-account-wrapper {
+        display: flex;
+        align-items: center;
+
+        p {
+          font-size: 12px;
+          margin-bottom: 0px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .copy-icon-wrapper {
+        }
+
+        .bank-icon-wrapper {
+        }
+      }
+
+      .inner-wallet-line {
+        border: 0.5px solid #c8d9d1;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      .inner-wallet-dotted-line {
+        border: 0.5px dotted #c8d9d1;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

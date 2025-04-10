@@ -1,0 +1,28 @@
+.status-wrapper {
+  display: flex;
+  align-items: center;
+
+  .failed {
+    background-color: red;
+  }
+
+  .pending {
+    background-color: yellow;
+  }
+
+  .approved {
+    background-color: green;
+  }
+
+  .dotted-div {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  h6 {
+    margin-bottom: 0px;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+}
