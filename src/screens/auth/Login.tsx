@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import { useFormik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { LoginValidation } from "../../validations/AuthValidation";
 import InputField from "./../../components/form/InputField";
 import axiosInstance from "../../config/AxiosConfig";
@@ -165,7 +165,7 @@ const Login = () => {
               <div className="row">
                 <div className="col-md-3 col-12"></div>
                 <div className="col-md-6 col-sm-12">
-                  <div className="form-widget-wrapper">
+                  <div className="form-widget-wrapper mt-5">
                     <h4 className="create-title">Sign in to Beam.</h4>
                     <p className="sub-create-title">
                       Please sign in with the your assigned login details{" "}

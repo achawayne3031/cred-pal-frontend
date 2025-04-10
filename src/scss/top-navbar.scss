@@ -1,0 +1,119 @@
+.logout-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  h6 {
+    margin-left: 10px;
+  }
+}
+
+.notification-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  .indicator {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: orangered;
+    border-radius: 50px;
+    top: 3px;
+    left: 11px;
+    border: 1px solid #ffffff;
+  }
+  h6 {
+    margin-left: 10px;
+    font-size: 15px;
+    margin-bottom: 0px;
+  }
+}
+
+.sm-top-navbar-wrapper {
+  display: flex;
+  align-items: center;
+
+  .logo-wrapper {
+    width: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    .logo {
+      width: 25px;
+      height: 25px;
+      background-color: #8babd8;
+      border-radius: 50%;
+      text-align: center;
+      align-items: center;
+      align-self: center;
+      justify-content: center;
+      display: flex;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    h6 {
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.lg-top-navbar-wrapper {
+  display: flex;
+  align-items: center;
+
+  .notification-wrapper {
+    position: relative;
+    .indicator {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: orangered;
+      border-radius: 50px;
+      top: 3px;
+      left: 11px;
+      border: 1px solid #ffffff;
+    }
+  }
+
+  .logo-wrapper {
+    width: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    .logo {
+      width: 25px;
+      height: 25px;
+      background-color: #8babd8;
+      border-radius: 50%;
+      text-align: center;
+      align-items: center;
+      align-self: center;
+      justify-content: center;
+      display: flex;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    h6 {
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 0px;
+    }
+  }
+}

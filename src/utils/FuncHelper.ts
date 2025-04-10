@@ -17,3 +17,13 @@ export const formatDate = (date: string): string => {
 export const formatTransactionId = (id: number): string => {
   return "TXN000" + id;
 };
+
+export const getFirstLetter = (name: string | undefined) => {
+  if (name !== undefined && name !== "") {
+    let separatedName = name.split(" ");
+    let firstLetter = separatedName[0].charAt(0);
+
+    let abb = firstLetter;
+    return abb.toUpperCase();
+  }
+};

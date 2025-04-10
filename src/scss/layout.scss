@@ -92,9 +92,25 @@
 }
 
 .search-wrapper {
-  display: flex;
   padding-top: 15px;
   padding-left: 20px;
+  position: relative;
+
+  input {
+    background-color: #f5f4f2;
+    border: 0px;
+    border-radius: 30px;
+    padding: 15px 20px;
+    height: 35px;
+    font-size: 12px;
+    width: 300px;
+  }
+
+  span {
+    position: relative;
+    right: 40px;
+    top: 2px;
+  }
 }
 
 button {

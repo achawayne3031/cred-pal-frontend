@@ -1,5 +1,4 @@
 import { FC } from "react";
-
 import "../../scss/status-widget.scss";
 
 interface InputProps {
